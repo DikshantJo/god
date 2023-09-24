@@ -2,8 +2,6 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
-let messageSent = false;
-
 export default function CareersForm() {
   const {
     register,
@@ -13,8 +11,6 @@ export default function CareersForm() {
   } = useForm();
 
   async function onSubmitForm(data) {
-    //console.log(data);
-
     const formdata = new FormData();
 
     Object.entries(data).forEach(([key, value]) => {
@@ -35,8 +31,6 @@ export default function CareersForm() {
     try {
       const res = await axios(config);
       if (res.status === 200) {
-        console.log("Message was sent Successfully");
-        messageSent = true;
         reset();
       }
     } catch (err) {
@@ -47,46 +41,53 @@ export default function CareersForm() {
   return (
     <section className="container pt-3 mb-3">
       <div className="text-center">
-        <h2 className="h2 text-primary baskerville-font">Careers</h2>
-        <div className="d-flex justify-content-center">
-          <p className="text-light text-container text-wrap">
-            We are always looking for formal, friendly, professionals to expand
-            our operation. Please send us your details using the contact form
-            bellow and we will get in touch.
-          </p>
-        </div>
+        <h2 className="text-3xl text-primary font-bold mb-4">
+          Careers
+        </h2>
+        <p className="text-gray-600">
+          We are always looking for formal, friendly professionals to expand
+          our operation. Please send us your details using the contact form
+          below, and we will get in touch.
+        </p>
       </div>
-      {/* onSubmit={handleSubmit(onSubmitForm)} */}
-      <div className="d-flex justify-content-center">
+
+      <div className="flex justify-center">
         <form
-          className="text-primary mb-3 contact-form"
+          className="text-primary mb-3 contact-form w-full max-w-md"
           onSubmit={handleSubmit(onSubmitForm)}
         >
-          <div className="form-group">
-            <label htmlFor="name">Name</label>
+          {/* Name */}
+          <div className="mb-4">
+            <label htmlFor="careerName" className="block text-sm font-medium text-gray-700">
+              Name
+            </label>
             <input
               type="text"
-              className={`form-control ${
-                errors.careerName ? "border-danger" : ""
+              id="careerName"
+              className={`mt-1 p-2 border rounded-md w-full ${
+                errors.careerName ? "border-red-500" : ""
               }`}
-              id="name"
               placeholder="Enter your name"
               {...register("careerName", {
                 required: { value: true, message: "Your Name is required" },
               })}
             />
-            <span className="text-danger py-2">
-              {errors?.careerName?.message}
-            </span>
+            {errors?.careerName && (
+              <p className="mt-2 text-red-500">{errors?.careerName?.message}</p>
+            )}
           </div>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
+
+          {/* Email */}
+          <div className="mb-4">
+            <label htmlFor="careerEmail" className="block text-sm font-medium text-gray-700">
+              Email
+            </label>
             <input
               type="text"
-              className={`form-control ${
-                errors.careerEmail ? "border-danger" : ""
+              id="careerEmail"
+              className={`mt-1 p-2 border rounded-md w-full ${
+                errors.careerEmail ? "border-red-500" : ""
               }`}
-              id="email"
               placeholder="Enter your email"
               {...register("careerEmail", {
                 required: { value: true, message: "Your Email is required" },
@@ -96,18 +97,22 @@ export default function CareersForm() {
                 },
               })}
             />
-            <span className="text-danger py-2">
-              {errors?.careerEmail?.message}
-            </span>
+            {errors?.careerEmail && (
+              <p className="mt-2 text-red-500">{errors?.careerEmail?.message}</p>
+            )}
           </div>
-          <div className="form-group">
-            <label htmlFor="telephone">Phone Number</label>
+
+          {/* Phone Number */}
+          <div className="mb-4">
+            <label htmlFor="careerTelephone" className="block text-sm font-medium text-gray-700">
+              Phone Number
+            </label>
             <input
               type="text"
-              className={`form-control ${
-                errors.careerTelephone ? "border-danger" : ""
+              id="careerTelephone"
+              className={`mt-1 p-2 border rounded-md w-full ${
+                errors.careerTelephone ? "border-red-500" : ""
               }`}
-              id="telephone"
               placeholder="Enter your phone number"
               {...register("careerTelephone", {
                 required: {
@@ -121,18 +126,22 @@ export default function CareersForm() {
                 },
               })}
             />
-            <span className="text-danger py-2">
-              {errors?.careerTelephone?.message}
-            </span>
+            {errors?.careerTelephone && (
+              <p className="mt-2 text-red-500">{errors?.careerTelephone?.message}</p>
+            )}
           </div>
-          <div className="form-group">
-            <label htmlFor="badgeNumber">Badge Number</label>
+
+          {/* Badge Number */}
+          <div className="mb-4">
+            <label htmlFor="careerBadge" className="block text-sm font-medium text-gray-700">
+              Badge Number
+            </label>
             <input
               type="text"
-              className={`form-control ${
-                errors.careerBadge ? "border-danger" : ""
+              id="careerBadge"
+              className={`mt-1 p-2 border rounded-md w-full ${
+                errors.careerBadge ? "border-red-500" : ""
               }`}
-              id="badgeNumber"
               placeholder="Enter your badge number"
               {...register("careerBadge", {
                 required: {
@@ -149,19 +158,23 @@ export default function CareersForm() {
                 },
               })}
             />
-            <span className="text-danger py-2">
-              {errors?.careerBadge?.message}
-            </span>
+            {errors?.careerBadge && (
+              <p className="mt-2 text-red-500">{errors?.careerBadge?.message}</p>
+            )}
           </div>
-          <div className="form-group">
-            <label htmlFor="file">Your CV</label>
+
+          {/* Your CV */}
+          <div className="mb-4">
+            <label htmlFor="careerCV" className="block text-sm font-medium text-gray-700">
+              Your CV
+            </label>
             <input
               type="file"
-              className={`form-control ${
-                errors.careerCV ? "border-danger" : ""
-              }`}
-              id="file"
+              id="careerCV"
               multiple
+              className={`mt-1 p-2 border rounded-md w-full ${
+                errors.careerCV ? "border-red-500" : ""
+              }`}
               {...register("careerCV", {
                 required: {
                   value: true,
@@ -169,32 +182,35 @@ export default function CareersForm() {
                 },
               })}
             />
-            <span className="text-danger py-2">
-              {errors?.careerCV?.message}
-            </span>
+            {errors?.careerCV && (
+              <p className="mt-2 text-red-500">{errors?.careerCV?.message}</p>
+            )}
           </div>
-          <div className="form-group">
-            <label htmlFor="message">Message (optional)</label>
+
+          {/* Message (optional) */}
+          <div className="mb-4">
+            <label htmlFor="careerMessage" className="block text-sm font-medium text-gray-700">
+              Message (optional)
+            </label>
             <textarea
-              className="form-control"
-              id="message"
+              id="careerMessage"
               rows="3"
+              className="mt-1 p-2 border rounded-md w-full"
               placeholder="Leave a message here"
               {...register("careerMessage")}
             ></textarea>
           </div>
-          <div className="justify-content-end d-flex d-grid">
-            <button type="submit" className="btn mt-2">
+
+          <div className="flex justify-end">
+            <button
+              type="submit"
+              className="px-4 py-2 text-black bg-primary rounded-full hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary border-black"
+            >
               Submit
             </button>
           </div>
         </form>
       </div>
-      {messageSent && (
-        <div className="alert alert-success mt-2">
-          <p className="text-center">Message sent successfully</p>
-        </div>
-      )}
     </section>
   );
 }
