@@ -1,0 +1,90 @@
+.landing{
+    position: relative;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+
+    img{
+      object-fit: cover;
+    }
+    
+    .sliderContainer{
+      position: absolute;
+      top: calc(100vh - 350px);
+    }
+    
+    .slider{
+      position: relative;
+      white-space: nowrap;
+    }
+    
+    .slider p{
+      position: relative;
+      margin: 0px;
+      color: #000;
+      font-size: 230px;
+      font-weight: 500;
+      padding-right: 50px;
+    }
+    
+    .slider p:nth-of-type(2){
+      position: absolute;
+      left: 100%;
+      top: 0;
+    }
+  
+    .description{
+      position: absolute;
+      top: 35%;
+      left: 65%;
+      color: #000;
+      font-size: 24px;
+      font-weight: 300;
+      p{
+        margin: 0px;
+        margin-bottom: 10px;
+      }
+      svg{
+        transform: scale(2);
+        margin-bottom: 100px;
+      }
+    }
+  }
+  
+  .GLSHomePageCard {
+    height: 50vh;
+    width: 25vw;
+    /* filter: drop-shadow(0px 32px 64px rgba(0, 0, 0, 0.32)); */
+    box-shadow: 3px 9px 18px rgb(0 0 0 / 16%);
+    background-color: #fff;
+    border-radius: 6px;
+    position: relative;
+    transition: width 0.8s cubic-bezier(0.25, 1, 0.5, 1), height 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: translateY(0%);
+}
+.GLSHomePageCardImage{
+    border-radius: 6px;
+    position: absolute;
+}
+
+/* .GLSHomePageCard:hover {
+    height: 29vw;
+} */
+
+.GLSHomePageCardTitle {
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+}
+
+// .GLSHomePageCard:hover
+ .GLSHomePageCardOverlay {
+    height: 100%;
+    width: 100%;
+    // background: linear-gradient(179deg, rgb(0 0 0 / 8%) 6.95%, #2e2e2ecc 100%);
+    // background-color: #00000033;
+    border-radius: 6px;
+    z-index: 1;
+    /* transition: 0.4s ease-in-out; */
+    bottom: 0;
+}

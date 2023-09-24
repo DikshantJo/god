@@ -1,0 +1,88 @@
+.introduction{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 99;
+    background-color: #141516;
+    svg{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: calc(100% + 300px);
+        path{
+            fill: #141516;
+        }
+    }
+    .brandName {
+        width: 40vh;
+        height: 40vh;
+        position: absolute;
+        top: 10%;
+        left: 7%;
+        z-index: 9;
+    }
+    p{
+        display: flex;
+        color: white;
+        font-size: 62px;
+        align-items: center;
+        position: absolute;
+        z-index: 1;
+        bottom: 5%;
+        right: 5%;
+        font-weight: 700;
+        span{
+            display: block;
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+    }
+}
+
+@media (max-width: 850px) {
+    .introduction {
+        width: 100vw;
+        height: 100vh;
+        .brandName {
+            width: 30vh;
+            height: 30vh;
+            position: absolute;
+            top: 10%;
+            left: 7%;
+            z-index: 9;
+        }
+        .percentage {
+            bottom: 5%;
+            margin-bottom: 20px;
+            margin-right: 20px;
+            font-size: 42px;
+        }
+    }
+}
+
+@media (max-width: 550px) {
+    .introduction {
+        width: 100vw;
+        height: 100vh;
+        .brandName {
+            width: 30vh;
+            height: 30vh;
+            position: absolute;
+            top: 10%;
+            left: 7%;
+            z-index: 9;
+        }
+        .percentage {
+            bottom: 5%;
+            margin-bottom: 20px;
+            margin-right: 20px;
+            font-size: 42px;
+        }
+    }
+}
