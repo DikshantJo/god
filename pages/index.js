@@ -85,9 +85,9 @@ const page = () => {
 
   return (
     <div>
-      <AnimatePresence mode='wait'>
+      {/* <AnimatePresence mode='wait'>
         {isLoading && <Preloader />}
-      </AnimatePresence>
+      </AnimatePresence> */}
       {/* <div className="tab-header mt-16">
         <button
           className={activeTab === 1 ? 'active-tab' : ''}
