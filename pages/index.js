@@ -11,6 +11,7 @@ import ImagesProduct from '@/components/GallaryProduct/Gallary'
 import ImagesInterior from '@/components/GallaryInterior/Gallary'
 import GallaryVideo from '@/components/GalleryVideo/Gallary';   
 import Preloader from '../components/Preloader/Preloader'
+import Header from '@/components/HeaderNew/Index'
 
 
 import SlidingImages from '@/components/SlidingImages/SlidingImages';
@@ -85,6 +86,7 @@ const page = () => {
 
   return (
     <div>
+      <Header />
       {/* <AnimatePresence mode='wait'>
         {isLoading && <Preloader />}
       </AnimatePresence> */}

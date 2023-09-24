@@ -5,16 +5,16 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence } from 'framer-motion';
 import Nav from './nav';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Rounded from '../../common/RoundedButton';
-import Magnetic from '../../common/Magnetic';
+// import gsap from 'gsap';
+// import { ScrollTrigger } from 'gsap/ScrollTrigger';
+// import Rounded from '../../common/RoundedButton';
+// import Magnetic from '../../common/Magnetic';
 
 import Link from 'next/link';
 
 
 
-import Message from '../../../public/header/message.svg'
+import Message from '../../public/header/message.svg'
 
 export default function Header() {
     const header = useRef(null);
