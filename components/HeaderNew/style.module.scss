@@ -1,9 +1,10 @@
 .header{
-    background-color: #f4f0ea;
+    // background-color: #f4f0ea;
+    background-color: transparent;
     position: fixed;
     width: 100%;
     box-sizing: border-box;
-    padding: 10px;
+    // padding: 10px;
     top:0;
     z-index: 999;
 
@@ -19,11 +20,12 @@
 
     .bar{
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         text-transform: uppercase;
         font-size: 12px;
         font-weight: 400;
-        position: relative;
+        margin-bottom: 20px;
+        // position: relative;
 
         p{
             margin: 0px;
@@ -31,9 +33,12 @@
 
         a{
             text-decoration: none;
-            color: black;
-            position: absolute;
+            color: #fff;
+            // position: absolute;
             left: 0;
+            font-size: 18px;
+            margin: 0 32px;
+            margin-top: 10px;
         }
 
         .shopContainer{
@@ -58,6 +63,9 @@
                 position: relative;
                 display: flex;
                 align-items: center;
+                color: #fff;
+                margin: 0 24px 0 5px;
+                font-size: 18px;
             }
 
             p{
@@ -68,15 +76,16 @@
             }
 
             .burger{
-                width: 22.5px;
+                width: 26.5px;
                 position: relative;
                 pointer-events: none;
+                margin-left: 10px;
     
                 &::after, &::before{
                     content: "";
-                    height: 1px;
+                    height: 2px;
                     width: 100%;
-                    background-color: black;
+                    background-color: #fff;
                     position: relative;
                     display: block;
                     transition: all 1s cubic-bezier(0.76, 0, 0.24, 1);
@@ -110,7 +119,7 @@
 
 @media only screen and (min-width: 600px) {
     .header{
-        padding: 20px;
+        padding:  20px 0 0 0;
 
         .bar{
             font-size: 15px;
