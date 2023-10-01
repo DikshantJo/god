@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence } from 'framer-motion';
 
 
+import Hero from '@/components/HeroAutoScroll/index'
+
+
 const ContactForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -50,11 +53,12 @@ const ContactForm = () => {
 
   return (
     <div className="flex p-10 relative">
-      <div className="w-1/2 flex flex-col justify-center items-center text-4xl font-extrabold text-white bg-black fixed top-0 left-0 lg:h-[100vh]">
-        Contact
-        <div className="text-3xl font-extrabold text-white text-center p-10">
-          We are here to help, get in touch with us.
-        </div>
+      <div className="w-1/2 flex flex-col text-6xl font-bold text-white bg-black fixed top-0 left-0 lg:h-[100vh]">
+        {/* <h1>Communication is everything</h1>
+        <div className="text-xl font-medium text-white text-center p-10">
+        Send us what you have on your mind, and we will get in touch with you ASAP.
+        </div> */}
+        <Hero />
       </div>
       <div className='w-1/2 flex-col lg:h-[100vh]' ></div>
       <div className="sm:w-full md:w-full lg:w-1/2 flex items-center justify-center">
@@ -87,11 +91,11 @@ const ContactForm = () => {
             });
           }}
         >
-          <div className="flex flex-col w-full gap-5">
+          <div className="flex flex-col w-full gap-4">
             <h2>Let's connect</h2>
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-4">
               <label htmlFor="name">Name</label>
-              <input
+              <input className="mr-2"
                 value={name}
                 onChange={(e) => {
                   setName(e.target.value);
@@ -103,7 +107,7 @@ const ContactForm = () => {
                 className="border-[1px] border-gray-300 rounded-xl h-[55px]"
               />
             </div> 
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-4">
               <label htmlFor="email">Email</label>
               <input
                 value={email}
@@ -117,7 +121,7 @@ const ContactForm = () => {
                 className="border-[1px] border-gray-300 rounded-xl h-[55px]"
               />
             </div>
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-4">
               <label htmlFor="name">Website or Instagram URL</label>
               <input
                 value={name}
@@ -131,7 +135,7 @@ const ContactForm = () => {
                 className="border-[1px] border-gray-300 rounded-xl h-[55px]"
               />
             </div> 
-            {/* <div className="flex flex-col gap-5">
+            {/* <div className="flex flex-col gap-4">
               <h2>Type of Services</h2>
               <label><input type="checkbox" value = "Still life product photography" onChange={handleCheckboxChange} /> Still life product photography </label> 
               <label><input type="checkbox"/> General videography </label> 
@@ -140,10 +144,10 @@ const ContactForm = () => {
               <label><input type="checkbox"/> Music videos </label> 
               <label><input type="checkbox"/>Wedding films</label> 
             </div> */}
-            <div className='flex flex-col gap-5'>
+            <div className='flex flex-col gap-4'>
                 {options.map((option) => (
                   <label key={option}>
-                    <input
+                    <input className='mr-2'
                       type="checkbox"
                       checked={selectedCheckboxes.includes(option)}
                       onChange={() => handleCheckboxChange(option)}
@@ -152,7 +156,7 @@ const ContactForm = () => {
                   </label>
                 ))}
             </div>
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-4">
               <label htmlFor="name">Message</label>
               <textarea
                 value={message}
@@ -165,12 +169,12 @@ const ContactForm = () => {
                 className="border-[1px] border-gray-300 rounded-xl p-5"
               />
             </div>
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-4">
               <button
                 type="submit"
                 className={
                   submitted
-                    ? "bg-green-200 rounded-xl p-5 flex items-center justify-center gap-5 text-green-600"
+                    ? "bg-green-200 rounded-xl p-5 flex items-center justify-center gap-4 text-green-600"
                     : "bg-blue-500 text-white rounded-xl p-5"
                 }
               >

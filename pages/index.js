@@ -5,6 +5,8 @@ import React from 'react'
 const { useEffect, useState } = require('react');
 import { AnimatePresence } from 'framer-motion';
 
+import { getProjects } from '@/sanity/sanity-utils';
+
 //components
 import FloaterBar from '@/components/Floater/FloaterBar';
 import ImagesProduct from '@/components/GallaryProduct/Gallary'
@@ -13,6 +15,8 @@ import GallaryVideo from '@/components/GalleryVideo/Gallary';
 import Preloader from '../components/Preloader/Preloader'
 import Header from '@/components/HeaderNew/Index'
 
+// import Landing from '@/components/LandingScroll/landing'
+import Landing from '@/components/HeroAutoScroll/index'
 
 import SlidingImages from '@/components/SlidingImages/SlidingImages';
 import FAQ from '@/components/FAQ/FAQParent'
@@ -84,6 +88,15 @@ const page = () => {
         // Add more image paths here
       ];
 
+     useEffect(()=>{
+      (
+        async () => {
+          const project = await getProjects();
+          // console.log(project)
+        }
+      )()
+     },[])
+
   return (
     <div>
       <Header />
@@ -110,18 +123,20 @@ const page = () => {
           Tab 3
         </button>
       </div> */}
+      <Landing />
       <div className="tab-content mt-32">
-        {activeTab === 1 && <div><ImagesProduct images = {images} /></div>}
+        <ImagesProduct images = {images} />
+        {/* {activeTab === 1 && <div><ImagesProduct images = {images} /></div>}
         {activeTab === 2 && <div> <ImagesInterior images = {images} /></div>}
-        {activeTab === 3 && <div><GallaryVideo /> </div>}
+        {activeTab === 3 && <div><GallaryVideo /> </div>} */}
         {/* {activeTab === 4 && <div><GallaryVideo /> </div>} */}
       </div>
-      <FAQ />
+      {/* <FAQ /> */}
     
-     <SlidingImages />
+     {/* <SlidingImages /> */}
     
-     <Contact />
-     <FloaterBar activeTab={activeTab} onSharedDataChange={handleTabClick} />
+     {/* <Contact /> */}
+     {/* <FloaterBar activeTab={activeTab} onSharedDataChange={handleTabClick} /> */}
     </div>
   )
 }

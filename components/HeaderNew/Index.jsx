@@ -14,17 +14,19 @@ export default function index() {
         <div className={styles.header}>
             <div className={styles.bar}>
                 <Link href="/">God Like Studio</Link>
-                <div onClick={() => {setIsActive(!isActive)}} className={styles.el}>
-                    <div>
+                <div  className={styles.el}>
+                    <div className='hidden lg:flex'>
                         <Link className='mx-3' href="/">Home</Link>
                         <Link className='mx-3' href="/">Work</Link>
                         <Link className='mx-3' href="/">Contact</Link>
                         <Link className='mx-3' href="/">Book</Link>
                     </div>
-                    <div className={`${styles.burger} ${isActive ? styles.burgerActive : ""}`}></div>
-                    <div className={styles.label}>
-                        <motion.p variants={opacity} animate={!isActive ? "open" : "closed"}>Menu</motion.p>
-                        <motion.p variants={opacity} animate={isActive ? "open" : "closed"}>Close</motion.p>
+                    <div onClick={() => {setIsActive(!isActive)}} className='flex justify-center items-center' >
+                        <div className={`${styles.burger} ${isActive ? styles.burgerActive : ""}`}></div>
+                        <div className={styles.label}>
+                            <motion.p variants={opacity} animate={!isActive ? "open" : "closed"}>Menu</motion.p>
+                            <motion.p variants={opacity} animate={isActive ? "open" : "closed"}>Close</motion.p>
+                        </div>
                     </div>
                 </div>
                 {/* <motion.div variants={opacity} animate={!isActive ? "open" : "closed"} className={styles.shopContainer}>

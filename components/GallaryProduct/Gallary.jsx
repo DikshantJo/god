@@ -7,8 +7,13 @@ import gsap from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Image from 'next/image';
 
+
+// Import from sanity
+import { getProjects } from '@/sanity/sanity-utils';
+
 const Gallery = ({ images }) => {
   const [showModal, setShowModal] = useState(false);
+  const [ project, setProject] = useState([])
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const Card = useRef(null);
 
@@ -60,6 +65,17 @@ const Gallery = ({ images }) => {
     );
   };
 
+
+  useEffect(()=>{
+    (
+      async () => {
+        const project = await getProjects();
+        setProject(project)
+        console.log(project)
+      }
+    )()
+   },[])
+
   return (
     <>
         <div>
@@ -71,11 +87,18 @@ const Gallery = ({ images }) => {
               <span className='block w-full text-center' style={{fontSize:'14px'}}>Scroll down</span>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 p-20 pt-10">
-          {images.map((image, index) => (
+          {/* {images.map((image, index) => (
             <div ref={Card} key={index} className="relative cursor-zoom-in" style={{ height: '60vh' }} onClick={() => openModal(index)}>
               <Image src={image} alt={`Image ${index}`} className="w-full h-full object-cover rounded-lg" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
             </div>
+          ))} */}
+
+          {project.map((pro, index) => (
+            <div ref={Card} key={index} className="relative cursor-zoom-in" style={{ height: '60vh' }} onClick={() => openModal(pro.image === null ? 0 : index)}>
+              <Image src={pro.image === null ? images[0] : pro.image } alt={`Image ${index}`} className="w-full h-full object-cover rounded-lg" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+            </div>
           ))}
+
 
           {/* Modal */}
           {showModal && (
@@ -94,7 +117,7 @@ const Gallery = ({ images }) => {
                   // fill={true}
                   width={500}
                   height={500}
-                  src={images[currentImageIndex]}
+                  src={currentImageIndex === 0 ? images[0]: project[currentImageIndex].image}
                   alt={`Modal Image`}
                   // className="w-full h-auto"
                   // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
