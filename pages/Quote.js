@@ -39,7 +39,7 @@ export default function CareersForm() {
   }
 
   return (
-    <section className="container pt-3 mb-3">
+    <section className="pt-3 mt-24">
       <div className="text-center">
         <h2 className="text-3xl text-primary font-bold mb-4">
           Careers
@@ -51,7 +51,7 @@ export default function CareersForm() {
         </p>
       </div>
 
-      <div className="flex justify-center">
+      <div className="flex justify-center mt-8">
         <form
           className="text-primary mb-3 contact-form w-full max-w-md"
           onSubmit={handleSubmit(onSubmitForm)}
@@ -128,6 +128,54 @@ export default function CareersForm() {
             />
             {errors?.careerTelephone && (
               <p className="mt-2 text-red-500">{errors?.careerTelephone?.message}</p>
+            )}
+          </div>
+
+           {/* Website */}
+           <div className="mb-4">
+            <label htmlFor="websiteURL" className="block text-sm font-medium text-gray-700">
+              Website
+            </label>
+            <input
+              type="text"
+              id="websiteURL"
+              className={`mt-1 p-2 border rounded-md w-full ${
+                errors.websiteURL? "border-red-500" : ""
+              }`}
+              placeholder="Enter website"
+              {...register("websiteURL", {
+                required: {
+                  value: false,
+                  message: "Enter the URL to your website if you have one.",
+                }
+              })}
+            />
+            {errors?.websiteURL && (
+              <p className="mt-2 text-red-500">{errors?.websiteURL?.message}</p>
+            )}
+          </div>
+
+            {/*Instagram */}
+            <div className="mb-4">
+            <label htmlFor="Insta" className="block text-sm font-medium text-gray-700">
+               Instagram
+            </label>
+            <input
+              type="text"
+              id="Insta"
+              className={`mt-1 p-2 border rounded-md w-full ${
+                errors.Insta? "border-red-500" : ""
+              }`}
+              placeholder="Enter website"
+              {...register("Insta", {
+                required: {
+                  value: false,
+                  message: "Enter your Instagram",
+                }
+              })}
+            />
+            {errors?.Insta && (
+              <p className="mt-2 text-red-500">{errors?.Insta?.message}</p>
             )}
           </div>
 

@@ -1,0 +1,127 @@
+
+.sliderI,.sliderII ,.sliderIII {
+    height: 100vh;
+    margin: auto;
+    position: relative;
+    width: 95%;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+
+.slidetrack {
+    display: flex;
+    flex-direction: column;
+    height: calc(250px * 18);
+    animation: scroll 110s linear infinite;
+    width: 100%;
+}
+
+.sliderI{
+    width: 25%;
+}
+
+.sliderII {
+    width: 50%;
+}
+.sliderIII{
+    width: 25%;
+}
+
+.slide {
+    height: 500px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.socialLinks  {
+
+}
+
+
+.slidetrackII {
+    display: flex;
+    flex-direction: column;
+    height: calc(250px * 18);
+    animation: scrollI 110s linear infinite;
+    width: 100%;
+}
+.sliderI .slidetrack .slide {
+    padding-left:  0;
+}
+.sliderIII .slidetrack .slide {
+    padding-right:  0;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(calc(-250px * 18));
+    }
+}
+
+@keyframes scrollI {
+    0% {
+        transform: translateY(calc(-250px * 18));
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.title{
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    line-height: 100px;
+}
+
+@media (min-width:780px) and (max-width:1040px) {
+    .title {
+        line-height: 54px;
+    }
+    .socialLinks {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .copyRight {
+        font-size: 12px;
+    }
+    .sliderI .slidetrack .slide {
+        padding-left:  0;
+    }
+    .sliderIII .slidetrack .slide {
+        padding-right:  0;
+    }
+}
+
+
+@media (max-width:550px) {
+    .title {
+        font-size: 32px;
+        line-height: 44px;
+    }
+    .socialLinks {
+        font-size: 14px;
+        line-height: 24px;
+    }
+    .copyRight {
+        font-size: 12px;
+    }
+
+    .sliderI .slidetrack .slide {
+        padding-left:  0;
+    }
+    .sliderIII .slidetrack .slide {
+        padding-right:  0;
+    }
+}
+

@@ -116,6 +116,47 @@
     }
 }
 
+@media (max-width:550px){
+    .header{
+        .bar{
+            margin-bottom: 10px;
+            a {
+                margin-left: 15px;
+                font-size: 16px;
+            }
+            padding-top: 5px;
+
+            .el{
+                gap:0;
+                .label{
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    color: #fff;
+                    margin: 0 10px 0 5px;
+                    font-size: 16px;
+                    padding-top: 5px;
+                }
+
+                .burger{
+                    width: 24.5px;
+                    position: relative;
+                    pointer-events: none;
+                    margin-left: 10px;
+                    padding-top: 5px;
+        
+                    &::after, &::before{
+                        content: "";
+                        height: 1px; 
+                        width: 90%;
+                    }
+        
+                }
+        
+            }
+        }
+    }
+}
 
 @media only screen and (min-width: 600px) {
     .header{
@@ -125,6 +166,7 @@
             font-size: 15px;
         }
 
+       
         .shop{
             display: block;
             cursor: pointer;
