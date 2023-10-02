@@ -126,7 +126,6 @@ const page = () => {
       <Landing />
       <div className="tab-content mt-32">
         <ImagesProduct images = {images} />
-        {/* <ImagesInterior images = {images} /> */}
         {/* {activeTab === 1 && <div><ImagesProduct images = {images} /></div>}
         {activeTab === 2 && <div> <ImagesInterior images = {images} /></div>}
         {activeTab === 3 && <div><GallaryVideo /> </div>} */}
