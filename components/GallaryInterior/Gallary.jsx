@@ -1,12 +1,19 @@
 // import React, { useState, useEffect } from 'react';
+"use client"
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence } from 'framer-motion';
 import gsap from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import Image from 'next/image';
+
+
+// Import from sanity
+import { getProjectsInterior } from '@/sanity/sanity-utils';
 
 const Gallery = ({ images }) => {
   const [showModal, setShowModal] = useState(false);
+  const [ project, setProject] = useState([])
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const Card = useRef(null);
 
@@ -23,7 +30,6 @@ const Gallery = ({ images }) => {
   //       }
   //   })
   // }, [])
-
 
 
   useEffect(() => {
@@ -55,9 +61,20 @@ const Gallery = ({ images }) => {
 
   const navigateImages = (offset) => {
     setCurrentImageIndex((prevIndex) =>
-      (prevIndex + offset + images.length) % images.length
+      (prevIndex + offset + project.length) % project.length
     );
   };
+
+
+  useEffect(()=>{
+    (
+      async () => {
+        const project = await getProjectsInterior();
+        setProject(project)
+        console.log(project)
+      }
+    )()
+   },[])
 
   return (
     <>
@@ -66,16 +83,22 @@ const Gallery = ({ images }) => {
               {/* <span className='absolute' style={{fontSize:'14px'}}>Portfolio</span> */}
                 Interior
                 <span style={{color:'#777', marginLeft:'16px'}}>Photography</span>
-            </h1>
-            <span className='text-center block w-full' style={{fontSize:'14px'}}>Scroll down</span>
+               </h1>
+              <span className='block w-full text-center' style={{fontSize:'14px'}}>Scroll down</span>
         </div>
-
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 p-20 pt-10">
-          {images.map((image, index) => (
+          {/* {images.map((image, index) => (
             <div ref={Card} key={index} className="relative cursor-zoom-in" style={{ height: '60vh' }} onClick={() => openModal(index)}>
-              <img src={image} alt={`Image ${index}`} className="w-full h-full object-cover rounded-lg" />
+              <Image src={image} alt={`Image ${index}`} className="w-full h-full object-cover rounded-lg" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+            </div>
+          ))} */}
+
+          {project.map((pro, index) => (
+            <div ref={Card} key={index} className="relative cursor-zoom-in" style={{ height: '60vh' }} onClick={() => openModal(index)}>
+              <Image src={pro.image } alt={`Image ${index}`} className="w-full h-full object-cover rounded-lg" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
             </div>
           ))}
+
 
           {/* Modal */}
           {showModal && (
@@ -90,10 +113,15 @@ const Gallery = ({ images }) => {
                 >
                   &times;
                 </span>
-                <img
-                  src={images[currentImageIndex]}
+                <Image
+                  // fill={true}
+                  width={500}
+                  height={500}
+                  src={project[currentImageIndex].image}
                   alt={`Modal Image`}
-                  className="w-full h-auto"
+                  // className="w-full h-auto"
+                  // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  unoptimized
                 />
               </div>
             </div>
