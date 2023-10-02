@@ -18,6 +18,7 @@ const Interior = {
         name: "image",
         title: "Image",
         type: "image",
+        validation: (Rule) => Rule.required(), // Use a fat arrow here
         options: { hotspot: true },
         fields: [
           {
