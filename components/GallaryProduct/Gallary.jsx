@@ -61,7 +61,7 @@ const Gallery = ({ images }) => {
 
   const navigateImages = (offset) => {
     setCurrentImageIndex((prevIndex) =>
-      (prevIndex + offset + images.length) % images.length
+      (prevIndex + offset + project.length) % project.length
     );
   };
 
@@ -94,8 +94,8 @@ const Gallery = ({ images }) => {
           ))} */}
 
           {project.map((pro, index) => (
-            <div ref={Card} key={index} className="relative cursor-zoom-in" style={{ height: '60vh' }} onClick={() => openModal(pro.image === null ? 0 : index)}>
-              <Image src={pro.image === null ? images[0] : pro.image } alt={`Image ${index}`} className="w-full h-full object-cover rounded-lg" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+            <div ref={Card} key={index} className="relative cursor-zoom-in" style={{ height: '60vh' }} onClick={() => openModal(index)}>
+              <Image src={pro.image } alt={`Image ${index}`} className="w-full h-full object-cover rounded-lg" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
             </div>
           ))}
 
@@ -117,7 +117,7 @@ const Gallery = ({ images }) => {
                   // fill={true}
                   width={500}
                   height={500}
-                  src={currentImageIndex === 0 ? images[0]: project[currentImageIndex].image}
+                  src={project[currentImageIndex].image}
                   alt={`Modal Image`}
                   // className="w-full h-auto"
                   // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
