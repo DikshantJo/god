@@ -3,7 +3,7 @@ import { useState } from 'react';
 import styles from './page.module.scss'
 
 const FaqItem = ({ question, answer }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const toggleAccordion = () => {
     setIsOpen(!isOpen);
@@ -20,7 +20,7 @@ const FaqItem = ({ question, answer }) => {
           {isOpen ? 'Close' : 'Open'}
         </button>
       </div>
-      {isOpen && <p className="mt-2">{answer}</p>}
+      {isOpen && <p className={`mt-2 ${styles.answerText}`}>{answer}</p>}
     </div>
   );
 };
